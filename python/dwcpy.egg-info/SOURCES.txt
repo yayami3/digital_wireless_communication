@@ -1,7 +1,6 @@
 README
 setup.py
 dwcpy/__init__.py
-dwcpy/main.py
 dwcpy/wireless_transfer.py
 dwcpy.egg-info/PKG-INFO
 dwcpy.egg-info/SOURCES.txt
@@ -9,10 +8,11 @@ dwcpy.egg-info/dependency_links.txt
 dwcpy.egg-info/requires.txt
 dwcpy.egg-info/top_level.txt
 dwcpy/rx/__init__.py
-dwcpy/rx/rx_base.py
+dwcpy/rx/rx.py
 dwcpy/tx/__init__.py
-dwcpy/tx/tx_base.py
+dwcpy/tx/tx.py
 tests/rx/__init__.py
 tests/rx/test_rx_base.py
 tests/tx/__init__.py
-tests/tx/test_tx_base.py
+tests/tx/test_BPSK_tx.py
+tests/tx/test_QPSK_tx.py

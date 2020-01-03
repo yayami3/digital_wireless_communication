@@ -1,10 +1,10 @@
 import unittest
-from dwcpy.rx import rx_base
+from dwcpy.rx import rx
 
-class TestRxBaseUnitTest(unittest.TestCase):
+class TestBPSKRxBaseUnitTest(unittest.TestCase):
     def setUp(self):
         signal = [1, -1, 1, -1, 1, -1] 
-        self.obj = rx_base.BPSK_rx(signal)
+        self.obj = rx.BPSK_rx(signal)
 
     def test_modulation(self):
         self.obj.demodulation()
