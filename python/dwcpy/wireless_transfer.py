@@ -2,7 +2,7 @@ import warnings
 import numpy as np
 import matplotlib.pyplot as plt
 
-class manager(object):
+class wireless_transfer(object):
     def __init__(self, delay=[0]):
         self.delay = [0,2]
         
