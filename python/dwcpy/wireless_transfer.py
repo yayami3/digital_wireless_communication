@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 class wireless_transfer(object):
     def __init__(self, delay=[0]):
-        self.delay = [0,2]
+        self.delay = delay
         
     def GWN(self, sigma):
         return sigma * np.random.randn() + sigma * np.random.randn() * 1j
