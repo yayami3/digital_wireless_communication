@@ -6,6 +6,10 @@ class rx_base(object):
     @abstractmethod
     def demodulation(self):
         raise NotImplementedError()
+
+    def inv_ss(self, ss_pattern, N_c):
+        pass
+        
 class BPSK_rx(rx_base):
     def __init__(self, signal):
         self.signal = signal

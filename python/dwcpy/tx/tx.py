@@ -13,6 +13,15 @@ class tx_base(object):
     def modulation(self):
         raise NotImplementedError()
 
+    def ss(self, ss_pattern, N_c):
+        self.ss_pattern = ss_pattern
+        self.N_c = N_c
+        self.data_ss = []
+        for d in self.data:
+            self.data_ss += [d] + [0 for _ in range(self.N_c)]
+
+        
+    
 class BPSK_tx(tx_base):
     def __init__(self, data):
         self.data = data
