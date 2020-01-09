@@ -4,11 +4,6 @@ import numpy as np
 class tx_base(object):
     __metaclass__=ABCMeta
 
-    # @abstractmethod
-    # def __init__(self, data):
-    #     self.data = data
-    #     self.len = len(data)
-
     @abstractmethod
     def modulation(self):
         raise NotImplementedError()
@@ -30,7 +25,6 @@ class QPSK_tx(tx_base):
             
         self.data = data        
         self.length = len(data)
-        # super().__init__(data)
         
     def modulation(self):
         self.signal = [] 
