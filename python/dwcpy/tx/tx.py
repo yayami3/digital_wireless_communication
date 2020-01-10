@@ -12,30 +12,24 @@ class tx_base(object):
     def modulation(self):
         raise NotImplementedError()
 
-    def ss(self, ss_pattern, N_c):
+    def ss(self, ss_pattern):
         self.ss_pattern = ss_pattern
         self.N_c = len(ss_pattern)
-        self.signal_ss = []
+        signal_ss_pre = []
         for d in self.signal:
-            self.signal_ss += [d] + [0 for _ in range(self.N_c)]
-        self.signal_ss2 = TVF(self.signal_ss, ss_pattern) 
-        # plt.plot(self.signal_ss, label="raw")
-        # plt.plot(self.signal_ss2, label="tvf")
-        # plt.legend()
-        # plt.show()
-        self.signal = self.signal_ss2
+            signal_ss_pre += [d] + [0 for _ in range(self.N_c-1)]
+        self.ss_tx = TVF(signal_ss_pre, ss_pattern)
         
 class BPSK_tx(tx_base):
     def __init__(self, data):
         self.data = data
         self.length = len(data)
-        # super().__init__(data)
+        self.signal = None
+        self.ss_tx = None
+        self.ss_pattern = None
         
     def modulation(self):
         self.signal = list(map(lambda x: -1 if x==0 else 1, self.data))
-
-    # def ss(self, ss_pattern, N_c):
-    #     super(BPSK_tx, self).ss(ss_pattern, N_c)
         
 class QPSK_tx(tx_base):
     def __init__(self, data):

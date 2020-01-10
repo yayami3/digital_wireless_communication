@@ -12,3 +12,25 @@ def TVF(signal_in, tap):
             signal_out[i] += s*w
 
     return signal_out
+
+def Mseqgen(coef, seq_len):
+    ans = []
+    tap = [1 for _ in range(len(coef))]
+    tap[0] = 1
+
+    for i in range(seq_len):
+        print("#", tap, i)
+        if tap[-1] == 0:
+            ans.append(-1)
+        else:
+            ans.append(1)
+
+        tmp = 0
+        for j in range(len(coef)):
+            tmp += coef[j] * tap[j]
+            tmp = tmp % 2
+        for j in reversed( range(1, len(tap))):
+            tap[j] = tap[j-1]
+        tap[0] = tmp
+        
+    return ans
