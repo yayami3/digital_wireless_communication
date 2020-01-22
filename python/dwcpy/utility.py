@@ -32,5 +32,5 @@ def Mseqgen(coef, seq_len):
         for j in reversed( range(1, len(tap))):
             tap[j] = tap[j-1]
         tap[0] = tmp
-        
+    print(ans)
     return ans

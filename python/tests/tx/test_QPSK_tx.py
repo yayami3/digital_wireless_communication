@@ -1,15 +1,17 @@
 import unittest
-from dwcpy.rx import rx
+import math
+
+from dwcpy.tx import tx
 
 class TestQPSKRxBaseUnitTest(unittest.TestCase):
     def setUp(self):
-        signal = [1, -1, 1, -1, 1, -1] 
-        self.obj = rx.QPSK_rx(signal)
+        data = [1, 1, 1, 0, 0, 1, 0, 0] 
+        self.obj = tx.QPSK_tx(data)
 
     def test_modulation(self):
-        self.obj.demodulation()
-        actual = self.obj.data
-        expected = [1, 0, 1, 0, 1, 0]  
+        self.obj.modulation()
+        actual = self.obj.signal
+        expected = [(-1-1j)/math.sqrt(2), (-1+1j)/math.sqrt(2), (1-1j)/math.sqrt(2), (1+1j)/math.sqrt(2)]  
         self.assertEqual(expected, actual)
 
 if __name__ == '__main__':

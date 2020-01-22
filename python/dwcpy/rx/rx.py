@@ -27,15 +27,20 @@ class BPSK_rx(rx_base):
         self.signal = tx.signal
         self.ss_rx = tx.ss_tx
         self.ss_pattern = tx.ss_pattern
-        self.N_c = tx.N_c
+        if tx.ss_pattern:
+            self.N_c = len(tx.ss_pattern)
         self.data = None
         
     def demodulation(self):
         self.data = list(map(lambda y: 0 if y.real<0 else 1, self.signal)) 
         
 class QPSK_rx(rx_base):
-    def __init__(self, signal):
-        self.signal = signal
+    def __init__(self, tx):
+        self.signal = tx.signal
+        # self.ss_rx = tx.ss_tx
+        # self.ss_pattern = tx.ss_pattern
+        # if tx.ss_pattern:
+        #     self.N_c = len(tx.ss_pattern)
         self.data = None
         
     def demodulation(self):

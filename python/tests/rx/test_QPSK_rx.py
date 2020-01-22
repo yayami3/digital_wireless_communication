@@ -5,9 +5,9 @@ from dwcpy.rx import rx
 class TestRxBaseUnitTest(unittest.TestCase):
     def setUp(self):
         data = [1, 0, 1, 0, 1, 0]
-        tx_module = tx.BPSK_tx(data)
+        tx_module = tx.QPSK_tx(data)
         tx_module.modulation()
-        self.obj = rx.BPSK_rx(tx_module)
+        self.obj = rx.QPSK_rx(tx_module)
 
     def test_modulation(self):
         self.obj.demodulation()
