@@ -19,7 +19,6 @@ def Mseqgen(coef, seq_len):
     tap[0] = 1
 
     for i in range(seq_len):
-        print("#", tap, i)
         if tap[-1] == 0:
             ans.append(-1)
         else:
@@ -32,5 +31,4 @@ def Mseqgen(coef, seq_len):
         for j in reversed( range(1, len(tap))):
             tap[j] = tap[j-1]
         tap[0] = tmp
-    print(ans)
     return ans

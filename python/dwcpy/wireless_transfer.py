@@ -18,7 +18,6 @@ class wireless_transfer(object):
         for t, r in zip(tx.data, rx.data):
             if t != r:
                 cnt += 1
-        print(cnt, tx.length)
         return cnt / tx.length 
         
 
