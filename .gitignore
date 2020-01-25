@@ -1,0 +1,4 @@
+*.pyc
+*~
+
+dwcpy.egg-info/
