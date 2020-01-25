@@ -15,5 +15,3 @@ if __name__ == "__main__":
     c = rx.BPSK_rx(a)
     c.inv_ss()
     c.demodulation()
-
-

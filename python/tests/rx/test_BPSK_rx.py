@@ -2,6 +2,7 @@ import unittest
 from dwcpy.tx import tx
 from dwcpy.rx import rx
 
+
 class TestRxBaseUnitTest(unittest.TestCase):
     def setUp(self):
         data = [1, 0, 1, 0, 1, 0]
@@ -14,6 +15,7 @@ class TestRxBaseUnitTest(unittest.TestCase):
         actual = self.obj.data
         expected = [1, 0, 1, 0, 1, 0]
         self.assertEqual(expected, actual)
+
 
 if __name__ == '__main__':
     unittest.main()
