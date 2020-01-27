@@ -1,4 +1,5 @@
 from abc import ABCMeta, abstractmethod
+from functools import reduce
 import numpy as np
 
 # from dwcpy.wireless_transfer import wireless_transfer as wt
@@ -44,15 +45,13 @@ class QPSK_tx(tx_base):
 
     def modulation(self):
         self.signal = []
-        for i in range(self.length // 2):
+
+        def qpsk(x, y):
             tmp = 1 / np.sqrt(2) + 1j / np.sqrt(2)
-            if self.data[2 * i] == 0:
-                if self.data[2 * i + 1] == 0:
-                    self.signal.append(tmp)
-                else:
-                    self.signal.append(tmp.conjugate())
+            if x == 0:
+                return tmp if y == 0 else tmp.conjugate()
             else:
-                if self.data[2 * i + 1] == 0:
-                    self.signal.append(-1 * tmp.conjugate())
-                else:
-                    self.signal.append(-1 * tmp)
+                return -1 * tmp.conjugate() if y == 0 else -1 * tmp
+
+        for x, y in zip(self.data[::2], self.data[1::2]):
+            self.signal.append(qpsk(x, y))
