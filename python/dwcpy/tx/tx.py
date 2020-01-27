@@ -1,9 +1,7 @@
 from abc import ABCMeta, abstractmethod
-from functools import reduce
 import numpy as np
 
-# from dwcpy.wireless_transfer import wireless_transfer as wt
-from dwcpy.utility import *
+from dwcpy.utility import TVF
 
 
 class tx_base(object):
