@@ -51,3 +51,13 @@ class QPSK_rx(rx_base):
         for s in self.signal:
             self.data.append(0 if s.real > 0 else 1)
             self.data.append(0 if s.imag > 0 else 1)
+
+class OFDM_rx(rx_base):
+    def __init__(self, tx):
+        self.signal = tx.signal
+        self.n_f = tx.n_f
+        self.data = []
+
+    def demodulation(self):
+        for rx in self.signal: 
+            self.data += list(map(lambda x: 0 if x<0 else 1, rx))

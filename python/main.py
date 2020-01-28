@@ -33,9 +33,16 @@ for n in [0.00000001, 0.9]:
     
     print(wt.BER(a, c))
 
-    # a = tx.QPSK_tx(data)
-    # a.modulation()
+    aa = tx.OFDM_tx(data, 2)
+    aa.modulation()
     # m = manager.manager()
+    # b = m.AGWN(a, n)
+    c = rx.OFDM_rx(aa)
+    c.demodulation()
+
+    a = tx.QPSK_tx(data)
+    a.modulation()
+    #m = manager.manager()
     # b = m.AGWN(a, n)
     # c = rx.QPSK_rx(b)
     # c.demodulation()
